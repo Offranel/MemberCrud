@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MemberCrud.Models;    
 
-internal class MemberMinistry
+public class MemberMinistry
 {
     /// <summary>
     /// Gets or sets the unique identifier for the MemberMinistry entity.  

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MemberCrud.NewFolder;
 
-internal class Member
+public class Member
 {
     public int Id { get; set; }
 
