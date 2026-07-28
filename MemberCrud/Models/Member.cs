@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Text;
 
-namespace MemberCrud.NewFolder;
+namespace MemberCrud.Models;
 
 public class Member
 {
