@@ -4,6 +4,9 @@ using System.Text;
 
 namespace MemberCrud.Models 
 {
+    // The ministry 
+
+
     /// <summary>
     /// Gets or sets the unique identifier for the Ministry entity.
     /// </summary>

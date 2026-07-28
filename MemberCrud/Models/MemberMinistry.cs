@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MemberCrud.Models;    
-
+// Relatiohship between member and ministry
 public class MemberMinistry
 {
     /// <summary>

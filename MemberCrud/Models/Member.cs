@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MemberCrud.Models;
-
+// Church Member represatation 
 public class Member
 {
     public int Id { get; set; }
