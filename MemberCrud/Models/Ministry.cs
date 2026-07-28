@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MemberCrud.NewFolder
+namespace MemberCrud.Models
 {
-    internal class Ministry
+    public class Ministry
     {
+        public int Id { get; set; }
+
+        public required string Name { get; set; }
     }
 }
