@@ -46,7 +46,10 @@ CREATE TABLE MemberMinistries
 
     CONSTRAINT FK_MemberMinistries_Ministries
         FOREIGN KEY (MinistryId)
-        REFERENCES Ministries(Id)
+        REFERENCES Ministries(Id),
+
+    CONSTRAINT UQ_MemberMinistries_MemberId_MinistryId
+        UNIQUE (MemberId, MinistryId)
 );
 
 -- VolunteerMessages table
