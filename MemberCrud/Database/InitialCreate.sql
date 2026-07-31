@@ -10,17 +10,18 @@ GO
 CREATE TABLE Members
 (
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    FirstName NVARCHAR(100) NOT NULL,
-    LastName NVARCHAR(100) NOT NULL,
-    Phone NVARCHAR(30) NOT NULL,
-    Email NVARCHAR(100) NOT NULL,
-    MembershipStatus NVARCHAR(50) NOT NULL,
+    FirstName VARCHAR(60) NOT NULL,
+    LastName VARCHAR(60) NOT NULL,
+    Phone BIGINT NULL,  
+    Email CHAR(100) NULL,  
+    MembershipStatus VARCHAR(50) NOT NULL,
     CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
-    Street CHAR(200),
+    Street CHAR(100),
     City CHAR(100),
-    State CHAR(100),
+    State CHAR(70),
     PostalCode VARCHAR(20),
-    DateOfBirth DATE
+    DateOfBirth DATE,
+    CONSTRAINT chk_phone_or_email CHECK (Phone IS NOT NULL OR Email IS NOT NULL)
 );
 
 
