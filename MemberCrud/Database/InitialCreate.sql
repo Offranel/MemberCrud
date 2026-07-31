@@ -15,8 +15,14 @@ CREATE TABLE Members
     Phone NVARCHAR(30) NOT NULL,
     Email NVARCHAR(100) NOT NULL,
     MembershipStatus NVARCHAR(50) NOT NULL,
-    CreateAt DATETIME NOT NULL
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    Street CHAR(200),
+    City CHAR(100),
+    State CHAR(100),
+    PostalCode VARCHAR(20),
+    DateOfBirth DATE
 );
+
 
 -- Ministries table
 CREATE TABLE Ministries
