@@ -7,11 +7,20 @@ namespace MemberCrud.Services;
 
 public class MemberService
 {
+    /// <summary>
+    /// Connection string used to connect to the MemberCrud SQL Server database.
+    /// </summary>
     private readonly string connectionString =
         "Server=(localdb)\\MSSQLLocalDB;Database=MemberCrud;Trusted_Connection=True;";
-
+    /// <summary>
+    /// Retrieves all members from the Members table.
+    /// </summary>
+    /// <returns>
+    /// A list of all members stored in the database.
+    /// </returns>
     public List<Member> GetAllMembers()
     {
+      
         List<Member> members = new();
 
         using SqlConnection connection = new(connectionString);
@@ -41,7 +50,12 @@ public class MemberService
 
         return members;
     }
-
+    /// <summary>
+    /// Adds a new member to the Members table.
+    /// </summary>
+    /// <param name="member">
+    /// The member to add to the database.
+    /// </param>
     public void AddMember(Member member)
     {
         using SqlConnection connection = new(connectionString);
@@ -64,7 +78,12 @@ public class MemberService
 
         command.ExecuteNonQuery();
     }
-
+    /// <summary>
+    /// Deletes a member from the Members table.
+    /// </summary>
+    /// <param name="member">
+    /// The member to delete from the database.
+    /// </param>
     public void DeleteMember(Member member)
     {
         using SqlConnection connection = new(connectionString);
