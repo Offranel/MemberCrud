@@ -1,8 +1,8 @@
 namespace MemberCrud
 {
-    public partial class Form1 : Form
+    public partial class ChurchManagement : Form
     {
-        public Form1()
+        public ChurchManagement()
         {
             InitializeComponent();
         }
