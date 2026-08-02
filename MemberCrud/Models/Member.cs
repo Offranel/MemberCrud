@@ -20,6 +20,15 @@ public class Member
 
     public required string MembershipStatus { get; set; }
 
+
+    public required string Street { get; set; }
+
+    public required string City { get; set; }
+
+    public required string PostalCode { get; set; }
+
+    public DateTime DateOfBirth { get; set; }
+
     public DateTime CreateAt { get; set; }
 
 }
