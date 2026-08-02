@@ -42,7 +42,12 @@ public class MemberService
                 Phone = reader["Phone"].ToString(),
                 Email = reader["Email"].ToString(),
                 MembershipStatus = reader["MembershipStatus"].ToString(),
-                CreateAt = Convert.ToDateTime(reader["CreateAt"])
+                CreateAt = Convert.ToDateTime(reader["CreateAt"]),
+
+                Street = reader["Street"].ToString(),
+                City = reader["City"].ToString(),
+                PostalCode = reader["PostalCode"].ToString(),
+                DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"])
             };
 
             members.Add(member);
@@ -63,9 +68,9 @@ public class MemberService
         connection.Open();
 
         string sql = @"INSERT INTO Members
-                       (FirstName, LastName, Phone, Email, MembershipStatus, CreateAt)
-                       VALUES
-                       (@FirstName, @LastName, @Phone, @Email, @MembershipStatus, @CreateAt)";
+                      (FirstName, LastName, Phone, Email, MembershipStatus, CreateAt, Street, City, PostalCode, DateOfBirth)
+                      VALUES
+                      (@FirstName, @LastName, @Phone, @Email, @MembershipStatus, @CreateAt, @Street, @City, @PostalCode, @DateOfBirth)";
 
         using SqlCommand command = new(sql, connection);
 
@@ -75,6 +80,10 @@ public class MemberService
         command.Parameters.AddWithValue("@Email", member.Email);
         command.Parameters.AddWithValue("@MembershipStatus", member.MembershipStatus);
         command.Parameters.AddWithValue("@CreateAt", member.CreateAt);
+        command.Parameters.AddWithValue("@Street", member.Street);
+        command.Parameters.AddWithValue("@City", member.City);
+        command.Parameters.AddWithValue("@PostalCode", member.PostalCode);
+        command.Parameters.AddWithValue("@DateOfBirth", member.DateOfBirth);
 
         command.ExecuteNonQuery();
     }
