@@ -27,8 +27,20 @@ public class VolunteerMessage
     /// </summary>
 
     public int Id { get; set; }
-
+    /// <summary>
+    /// The unique identifier of the member who sent the message.
+    ///
+    /// This property links the message to a specific member in the
+    /// Members table.
+    /// </summary>
     public int MemberId { get; set; }
+
+    /// <summary>
+    /// The text of the message sent by the volunteer.
+    ///
+    /// This property stores the message that will be read by the
+    /// church administration.
+    /// </summary>
 
     public required string MessageText { get; set; }
 
