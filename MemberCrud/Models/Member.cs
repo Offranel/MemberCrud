@@ -75,6 +75,12 @@ public class Member
     /// the member lives.
     /// </summary>
     public required string Street { get; set; }
+    /// <summary>
+    /// The member's city.
+    ///
+    /// This property stores the city where the member lives.
+    /// It is used as part of the member's address information.
+    /// </summary>
 
     public required string City { get; set; }
 
