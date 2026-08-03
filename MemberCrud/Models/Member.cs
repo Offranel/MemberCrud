@@ -44,7 +44,12 @@ public class Member
     /// </summary>
 
     public required string LastName { get; set; }
-
+    /// <summary>
+    /// The member's phone number.
+    ///
+    /// This property stores the member's primary contact number and
+    /// allows the church administration to communicate with the member.
+    /// </summary>
     public required string Phone { get; set; }
 
     public required string Email { get; set; }
