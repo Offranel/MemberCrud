@@ -68,7 +68,12 @@ public class Member
     /// </summary>
     public required string MembershipStatus { get; set; }
 
-
+    /// <summary>
+    /// The member's street address.
+    ///
+    /// This property stores the street and house number where
+    /// the member lives.
+    /// </summary>
     public required string Street { get; set; }
 
     public required string City { get; set; }
