@@ -35,6 +35,13 @@ public class Member
     /// member has a recorded first name.
     /// </summary>
     public required string FirstName { get; set; }
+    /// <summary>
+    /// The member's last name.
+    ///
+    /// This property stores the member's family name and is used
+    /// together with the first name to identify the member.
+    /// It is required for all member records.
+    /// </summary>
 
     public required string LastName { get; set; }
 
