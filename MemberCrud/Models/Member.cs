@@ -51,7 +51,13 @@ public class Member
     /// allows the church administration to communicate with the member.
     /// </summary>
     public required string Phone { get; set; }
-
+    /// <summary>
+    /// The member's email address.
+    ///
+    /// This property stores the member's email and is used to send
+    /// announcements, newsletters, and other important church
+    /// communications.
+    /// </summary>
     public required string Email { get; set; }
 
     public required string MembershipStatus { get; set; }
