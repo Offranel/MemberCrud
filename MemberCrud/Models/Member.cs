@@ -27,7 +27,13 @@ public class Member
     /// operations such as updating, deleting, and retrieving records.
     /// </summary>
     public int Id { get; set; }
-
+    /// <summary>
+    /// The member's first name.
+    ///
+    /// This property stores the member's given name and is displayed
+    /// throughout the application. It is required to make sure every
+    /// member has a recorded first name.
+    /// </summary>
     public required string FirstName { get; set; }
 
     public required string LastName { get; set; }
