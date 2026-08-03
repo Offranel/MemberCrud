@@ -5,8 +5,17 @@ using System.Text;
 
 namespace MemberCrud.Models;
 
+
 /// <summary>
-/// To have a message from a volunteer to the church admin.
+/// Represents a message sent by a volunteer to the church administration.
+///
+/// This class is used to store communication between a church volunteer
+/// and the church administration. Each message includes the volunteer
+/// who sent it, the message content, and the date and time it was sent.
+///
+/// VolunteerMessage objects can be saved to the database, displayed
+/// in the application, and used to keep track of volunteer questions,
+/// feedback, or requests.
 /// </summary>
 public class VolunteerMessage
 {
