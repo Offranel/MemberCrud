@@ -5,7 +5,18 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MemberCrud.Models;
-
+/// <summary>
+/// Represents a church member in the Church Member Manager application.
+///
+/// This class stores personal information, contact details, and membership
+/// information for each member. It is used as a data model for SQL Server
+/// database operations, Windows Forms user interface display, and business
+/// logic throughout the application.
+///
+/// Member objects are used when adding, editing, deleting, and viewing
+/// member records. Required properties help ensure that important
+/// information is always provided.
+/// </summary>
 public class Member
 {
     public int Id { get; set; }
