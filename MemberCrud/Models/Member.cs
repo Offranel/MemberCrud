@@ -98,7 +98,13 @@ public class Member
     /// information.
     /// </summary>
     public DateTime DateOfBirth { get; set; }
-
+    /// <summary>
+    /// The date and time when the member was created.
+    ///
+    /// This property records when the member was added to the
+    /// system. It can be used for reporting, history, and
+    /// administrative purposes.
+    /// </summary>
     public DateTime CreateAt { get; set; }
 
 }
