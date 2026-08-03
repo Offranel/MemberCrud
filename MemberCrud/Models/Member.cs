@@ -83,7 +83,12 @@ public class Member
     /// </summary>
 
     public required string City { get; set; }
-
+    /// <summary>
+    /// The member's postal code.
+    ///
+    /// This property stores the postal or ZIP code for the
+    /// member's address.
+    /// </summary>
     public required string PostalCode { get; set; }
 
     public DateTime DateOfBirth { get; set; }
