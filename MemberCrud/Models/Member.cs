@@ -90,7 +90,13 @@ public class Member
     /// member's address.
     /// </summary>
     public required string PostalCode { get; set; }
-
+    /// <summary>
+    /// The member's date of birth.
+    ///
+    /// This property records the member's birth date and can
+    /// be used for reports, birthday reminders, or age-related
+    /// information.
+    /// </summary>
     public DateTime DateOfBirth { get; set; }
 
     public DateTime CreateAt { get; set; }
