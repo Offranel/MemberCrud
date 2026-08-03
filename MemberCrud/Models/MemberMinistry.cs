@@ -32,7 +32,13 @@ public class MemberMinistry
     /// </summary>
 
     public int MemberId { get; set; }
-   
+    /// <summary>
+    /// The unique identifier of the ministry.
+    ///
+    /// This property stores the ID of the ministry and acts as a
+    /// foreign key to the Ministries table. It shows which ministry
+    /// the member has been assigned to.
+    /// </summary>
     public int MinistryId { get; set; } 
 
 }
