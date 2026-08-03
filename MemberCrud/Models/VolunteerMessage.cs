@@ -44,5 +44,11 @@ public class VolunteerMessage
 
     public required string MessageText { get; set; }
 
+    /// <summary>
+    /// The date and time when the message was sent.
+    ///
+    /// This property helps track when the message was created and
+    /// received by the church administration.
+    /// </summary>
     public DateTime SentAt { get; set; }
 }
