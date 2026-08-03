@@ -25,6 +25,12 @@ public class MemberMinistry
     /// </summary>
 
     public int Id { get; set; }
+    /// <summary>
+    /// The unique identifier of the member.
+    ///
+    /// This property stores the ID of the church member and acts as
+    /// a foreign key to the Members table.
+    /// </summary>
 
     public int MemberId { get; set; }
 
