@@ -59,7 +59,13 @@ public class Member
     /// communications.
     /// </summary>
     public required string Email { get; set; }
-
+    /// <summary>
+    /// The current membership status.
+    ///
+    /// This property indicates whether the member is Active,
+    /// Inactive, Pending, or has another membership status.
+    /// It helps the church keep track of member participation.
+    /// </summary>
     public required string MembershipStatus { get; set; }
 
 
