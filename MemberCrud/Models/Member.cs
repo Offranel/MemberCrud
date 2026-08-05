@@ -97,7 +97,7 @@ public class Member
     /// be used for reports, birthday reminders, or age-related
     /// information.
     /// </summary>
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
     /// <summary>
     /// The date and time when the member was created.
     ///
