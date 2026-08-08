@@ -1,94 +1,136 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using MemberCrud.Data;
 using MemberCrud.Models;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MemberCrud.Services;
 
+/// <summary>
+/// Provides database operations for church ministries.
+///
+/// This service uses Entity Framework Core to communicate with the
+/// MemberCrud SQL Server database through <see cref="MemberCrudDbContext"/>.
+///
+/// The service separates the Windows Forms user interface from the
+/// database logic. Forms can call these methods to add, update, delete,
+/// or retrieve ministries without needing to know how the database
+/// operations are performed.
+/// </summary>
 public class MinistryService
 {
-    private readonly string connectionString =
-        "Server=(localdb)\\MSSQLLocalDB;Database=MemberCrud;Trusted_Connection=True;";
-
+    /// <summary>
+    /// Adds a new ministry to the Ministries table.
+    /// </summary>
+    /// <param name="ministry">
+    /// The Ministry object containing the information that will be
+    /// stored in the database.
+    /// </param>
+    /// <remarks>
+    /// Entity Framework first tracks the Ministry object as a new entity.
+    /// SaveChanges then sends the INSERT operation to the SQL Server
+    /// database.
+    /// </remarks>
     public void AddMinistry(Ministry ministry)
     {
-        using SqlConnection connection = new(connectionString);
+        // Creates a temporary database context used to communicate
+        // with the MemberCrud database.
+        using MemberCrudDbContext db = new();
 
-        connection.Open();
+        // Adds the Ministry object to Entity Framework's change tracker.
+        // At this point, the ministry has not yet been saved to SQL Server.
+        db.Ministries.Add(ministry);
 
-        string sql = @"INSERT INTO Ministries
-                      (Name, Description)
-                      VALUES
-                      (@Name, @Description)";
-
-        using SqlCommand command = new(sql, connection);
-
-        command.Parameters.AddWithValue("@Name", ministry.Name);
-        command.Parameters.AddWithValue("@Description", ministry.Description);
-
-        command.ExecuteNonQuery();
+        // Saves all tracked changes to the SQL Server database.
+        // Entity Framework generates and executes the INSERT command.
+        db.SaveChanges();
     }
 
+    /// <summary>
+    /// Updates an existing ministry in the Ministries table.
+    /// </summary>
+    /// <param name="ministry">
+    /// The Ministry object containing the updated information.
+    /// The Id identifies which ministry should be updated.
+    /// </param>
+    /// <remarks>
+    /// Entity Framework marks the Ministry object as modified.
+    /// SaveChanges then generates and executes the UPDATE operation
+    /// in the SQL Server database.
+    /// </remarks>
     public void UpdateMinistry(Ministry ministry)
     {
-        using SqlConnection connection = new(connectionString);
+        // Creates a temporary database context for this operation.
+        using MemberCrudDbContext db = new();
 
-        connection.Open();
+        // Tells Entity Framework that this Ministry object already
+        // exists in the database and its information has been modified.
+        db.Ministries.Update(ministry);
 
-        string sql = @"UPDATE Ministries
-                      SET Name = @Name,
-                          Description = @Description
-                      WHERE Id = @Id";
-
-        using SqlCommand command = new(sql, connection);
-
-        command.Parameters.AddWithValue("@Id", ministry.Id);
-        command.Parameters.AddWithValue("@Name", ministry.Name);
-        command.Parameters.AddWithValue("@Description", ministry.Description);
-
-        command.ExecuteNonQuery();
+        // Applies the updated values to the database.
+        // Entity Framework generates the required UPDATE command.
+        db.SaveChanges();
     }
 
+    /// <summary>
+    /// Deletes an existing ministry from the Ministries table
+    /// using its unique identifier.
+    /// </summary>
+    /// <param name="id">
+    /// The unique Id of the ministry that should be deleted.
+    /// </param>
+    /// <remarks>
+    /// The method first searches the database for a ministry with
+    /// the specified Id. If the ministry exists, Entity Framework
+    /// marks it for deletion and SaveChanges removes it from the database.
+    ///
+    /// If no ministry with the specified Id exists, no deletion occurs.
+    /// </remarks>
     public void DeleteMinistry(int id)
     {
-        using SqlConnection connection = new(connectionString);
+        // Creates a temporary database context for this operation.
+        using MemberCrudDbContext db = new();
 
-        connection.Open();
+        // Searches the Ministries table for a ministry whose
+        // primary key matches the provided Id.
+        Ministry? ministry = db.Ministries.Find(id);
 
-        string sql = "DELETE FROM Ministries WHERE Id = @Id";
+        // Find() can return null if the ministry does not exist.
+        // Therefore, we check the result before attempting deletion.
+        if (ministry != null)
+        {
+            // Marks the Ministry object for deletion.
+            // The record is not removed from SQL Server yet.
+            db.Ministries.Remove(ministry);
 
-        using SqlCommand command = new(sql, connection);
-
-        command.Parameters.AddWithValue("@Id", id);
-
-        command.ExecuteNonQuery();
+            // Applies the deletion to the database.
+            // Entity Framework generates and executes the DELETE command.
+            db.SaveChanges();
+        }
     }
 
+    /// <summary>
+    /// Retrieves all ministries stored in the Ministries table.
+    /// </summary>
+    /// <returns>
+    /// A <see cref="List{Ministry}"/> containing all ministries
+    /// currently stored in the database.
+    /// </returns>
+    /// <remarks>
+    /// Entity Framework queries the Ministries table and automatically
+    /// converts each database record into a Ministry object.
+    ///
+    /// ToList() executes the query and returns the results as a list
+    /// that can be used by the Windows Forms user interface.
+    /// </remarks>
     public List<Ministry> GetAllMinistries()
     {
-        List<Ministry> ministries = new();
+        // Creates a temporary database context used to communicate
+        // with the MemberCrud database.
+        using MemberCrudDbContext db = new();
 
-        using SqlConnection connection = new(connectionString);
-
-        connection.Open();
-
-        string sql = "SELECT * FROM Ministries";
-
-        using SqlCommand command = new(sql, connection);
-        using SqlDataReader reader = command.ExecuteReader();
-
-        while (reader.Read())
-        {
-            Ministry ministry = new Ministry
-            {
-                Id = Convert.ToInt32(reader["Id"]),
-                Name = reader["Name"].ToString(),
-                Description = reader["Description"].ToString()
-            };
-
-            ministries.Add(ministry);
-        }
-
-        return ministries;
+        // Retrieves all records from the Ministries table.
+        // Entity Framework converts each database row into
+        // a Ministry object and ToList() returns them as a list.
+        return db.Ministries.ToList();
     }
 }
