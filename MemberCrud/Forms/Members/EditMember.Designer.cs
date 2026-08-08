@@ -151,7 +151,6 @@
             label10.Size = new Size(110, 25);
             label10.TabIndex = 10;
             label10.Text = "Postal Code:";
-            label10.Click += this.label10_Click;
             // 
             // label11
             // 
