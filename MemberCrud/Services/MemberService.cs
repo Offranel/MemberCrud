@@ -1,110 +1,90 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using MemberCrud.Data;
 using MemberCrud.Models;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MemberCrud.Services;
 
+/// <summary>
+/// Provides database operations for church members.
+/// 
+/// This service uses Entity Framework Core to communicate with the
+/// MemberCrud SQL Server database through <see cref="MemberCrudDbContext"/>.
+/// 
+/// The service separates the Windows Forms user interface from the
+/// database logic. Forms can call these methods without needing to know
+/// how the data is stored or retrieved.
+/// </summary>
 public class MemberService
 {
     /// <summary>
-    /// Connection string used to connect to the MemberCrud SQL Server database.
-    /// </summary>
-    private readonly string connectionString =
-        "Server=(localdb)\\MSSQLLocalDB;Database=MemberCrud;Trusted_Connection=True;";
-    /// <summary>
-    /// Retrieves all members from the Members table.
+    /// Retrieves all members stored in the Members table.
     /// </summary>
     /// <returns>
-    /// A list of all members stored in the database.
+    /// A <see cref="List{Member}"/> containing all members currently
+    /// stored in the database.
     /// </returns>
+    /// <remarks>
+    /// Entity Framework Core reads the Members table and converts
+    /// each database record into a Member object.
+    /// </remarks>
     public List<Member> GetAllMembers()
     {
-      
-        List<Member> members = new();
+        // Creates a temporary database context used to communicate
+        // with the MemberCrud database.
+        using MemberCrudDbContext db = new();
 
-        using SqlConnection connection = new(connectionString);
-
-        connection.Open();
-
-        string sql = "SELECT * FROM Members";
-
-        using SqlCommand command = new(sql, connection);
-        using SqlDataReader reader = command.ExecuteReader();
-
-        while (reader.Read())
-        {
-            Member member = new Member
-            {
-                Id = Convert.ToInt32(reader["Id"]),
-                FirstName = reader["FirstName"].ToString(),
-                LastName = reader["LastName"].ToString(),
-                Phone = reader["Phone"].ToString(),
-                Email = reader["Email"].ToString(),
-                MembershipStatus = reader["MembershipStatus"].ToString(),
-                CreateAt = Convert.ToDateTime(reader["CreateAt"]),
-
-                Street = reader["Street"].ToString(),
-                City = reader["City"].ToString(),
-                PostalCode = reader["PostalCode"].ToString(),
-                DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"])
-            };
-
-            members.Add(member);
-        }
-
-        return members;
+        // Retrieves all records from the Members table and converts
+        // the results into a List of Member objects.
+        return db.Members.ToList();
     }
+
     /// <summary>
     /// Adds a new member to the Members table.
     /// </summary>
     /// <param name="member">
-    /// The member to add to the database.
+    /// The Member object containing the information that will be
+    /// stored in the database.
     /// </param>
+    /// <remarks>
+    /// The member is first added to Entity Framework's change tracker.
+    /// SaveChanges then sends the INSERT operation to the SQL Server
+    /// database.
+    /// </remarks>
     public void AddMember(Member member)
     {
-        using SqlConnection connection = new(connectionString);
+        // Creates a database context for this operation.
+        using MemberCrudDbContext db = new();
 
-        connection.Open();
+        // Marks the Member object as a new record that should
+        // be inserted into the Members table.
+        db.Members.Add(member);
 
-        string sql = @"INSERT INTO Members
-                      (FirstName, LastName, Phone, Email, MembershipStatus, CreateAt, Street, City, PostalCode, DateOfBirth)
-                      VALUES
-                      (@FirstName, @LastName, @Phone, @Email, @MembershipStatus, @CreateAt, @Street, @City, @PostalCode, @DateOfBirth)";
-
-        using SqlCommand command = new(sql, connection);
-
-        command.Parameters.AddWithValue("@FirstName", member.FirstName);
-        command.Parameters.AddWithValue("@LastName", member.LastName);
-        command.Parameters.AddWithValue("@Phone", member.Phone);
-        command.Parameters.AddWithValue("@Email", member.Email);
-        command.Parameters.AddWithValue("@MembershipStatus", member.MembershipStatus);
-        command.Parameters.AddWithValue("@CreateAt", member.CreateAt);
-        command.Parameters.AddWithValue("@Street", member.Street);
-        command.Parameters.AddWithValue("@City", member.City);
-        command.Parameters.AddWithValue("@PostalCode", member.PostalCode);
-        command.Parameters.AddWithValue("@DateOfBirth", member.DateOfBirth);
-
-        command.ExecuteNonQuery();
+        // Saves the new member to the SQL Server database.
+        db.SaveChanges();
     }
+
     /// <summary>
-    /// Deletes a member from the Members table.
+    /// Deletes an existing member from the Members table.
     /// </summary>
     /// <param name="member">
-    /// The member to delete from the database.
+    /// The Member object representing the database record that
+    /// should be deleted.
     /// </param>
+    /// <remarks>
+    /// Entity Framework marks the member for deletion.
+    /// SaveChanges then sends the DELETE operation to the database.
+    /// </remarks>
     public void DeleteMember(Member member)
     {
-        using SqlConnection connection = new(connectionString);
+        // Creates a database context for this operation.
+        using MemberCrudDbContext db = new();
 
-        connection.Open();
+        // Marks the selected member as a record that should
+        // be removed from the Members table.
+        db.Members.Remove(member);
 
-        string sql = "DELETE FROM Members WHERE Id = @Id";
-
-        using SqlCommand command = new(sql, connection);
-
-        command.Parameters.AddWithValue("@Id", member.Id);
-
-        command.ExecuteNonQuery();
+        // Applies the deletion to the SQL Server database.
+        db.SaveChanges();
     }
 }
