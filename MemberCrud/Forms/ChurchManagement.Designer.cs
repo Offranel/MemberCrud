@@ -50,6 +50,7 @@
             MinistryManagemetBtn.TabIndex = 1;
             MinistryManagemetBtn.Text = "Ministry Management";
             MinistryManagemetBtn.UseVisualStyleBackColor = true;
+            MinistryManagemetBtn.Click += MinistryManagemetBtn_Click;
             // 
             // label1
             // 
