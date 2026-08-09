@@ -16,4 +16,13 @@ public partial class ChurchManagement : Form
         // Show the MinistryManagement form 
         ministryManagement.Show();
     }
+
+    private void MemberManagementBtn_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the MemberManagement form 
+        MemberManagement memberManagement = new MemberManagement();
+
+        // Show the MemberManagement form 
+        memberManagement.Show();
+    }
 }

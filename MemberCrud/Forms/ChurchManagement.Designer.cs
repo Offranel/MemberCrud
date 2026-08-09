@@ -41,6 +41,7 @@
             MemberManagementBtn.TabIndex = 0;
             MemberManagementBtn.Text = "Member Management";
             MemberManagementBtn.UseVisualStyleBackColor = true;
+            MemberManagementBtn.Click += MemberManagementBtn_Click;
             // 
             // MinistryManagemetBtn
             // 
