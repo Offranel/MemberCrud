@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
+            MinistriesLsbx = new ListBox();
             AddMinistryBtn = new Button();
             EditMinistryBtn = new Button();
             DeleteMinistryBtn = new Button();
             SuspendLayout();
             // 
-            // listBox1
+            // MinistriesLsbx
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(42, 41);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(269, 354);
-            listBox1.TabIndex = 0;
+            MinistriesLsbx.FormattingEnabled = true;
+            MinistriesLsbx.Location = new Point(42, 41);
+            MinistriesLsbx.Name = "MinistriesLsbx";
+            MinistriesLsbx.Size = new Size(269, 354);
+            MinistriesLsbx.TabIndex = 0;
             // 
             // AddMinistryBtn
             // 
@@ -50,6 +50,7 @@
             AddMinistryBtn.TabIndex = 1;
             AddMinistryBtn.Text = "Add Ministry";
             AddMinistryBtn.UseVisualStyleBackColor = true;
+            AddMinistryBtn.Click += AddMinistryBtn_Click;
             // 
             // EditMinistryBtn
             // 
@@ -59,6 +60,7 @@
             EditMinistryBtn.TabIndex = 2;
             EditMinistryBtn.Text = "Edit Ministry";
             EditMinistryBtn.UseVisualStyleBackColor = true;
+            EditMinistryBtn.Click += EditMinistryBtn_Click;
             // 
             // DeleteMinistryBtn
             // 
@@ -68,6 +70,7 @@
             DeleteMinistryBtn.TabIndex = 3;
             DeleteMinistryBtn.Text = "Delete Ministry";
             DeleteMinistryBtn.UseVisualStyleBackColor = true;
+            DeleteMinistryBtn.Click += DeleteMinistryBtn_Click;
             // 
             // MinistryManagement
             // 
@@ -77,7 +80,7 @@
             Controls.Add(DeleteMinistryBtn);
             Controls.Add(EditMinistryBtn);
             Controls.Add(AddMinistryBtn);
-            Controls.Add(listBox1);
+            Controls.Add(MinistriesLsbx);
             Name = "MinistryManagement";
             Text = "MinistryManagement";
             ResumeLayout(false);
@@ -85,7 +88,7 @@
 
         #endregion
 
-        private ListBox listBox1;
+        private ListBox MinistriesLsbx;
         private Button AddMinistryBtn;
         private Button EditMinistryBtn;
         private Button DeleteMinistryBtn;

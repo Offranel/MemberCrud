@@ -1,4 +1,4 @@
-CREATE DATABASE MemberCrud;
+﻿CREATE DATABASE MemberCrud;
 GO
 
 -- To use MemberCrub

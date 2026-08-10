@@ -10,7 +10,7 @@ namespace MemberCrud
 {
     public partial class EditMinistry : Form
     {
-        public EditMinistry()
+        public EditMinistry(int id)
         {
             InitializeComponent();
         }
