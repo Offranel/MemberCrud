@@ -14,5 +14,10 @@ namespace MemberCrud
         {
             InitializeComponent();
         }
+
+        private void FirstNameTxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
