@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using MemberCrud.Models;
+using MemberCrud.Services;
 
 namespace MemberCrud
 {
     public partial class MinistryManagement : Form
     {
-        public dynamic DatabaseConfig { get; private set; }
+        private readonly MinistryService _ministryService = new();
 
         public MinistryManagement()
         {
@@ -15,56 +16,31 @@ namespace MemberCrud
             LoadMinistries();
         }
 
-        // Load ministries into the ListBox
+        // Load ministries into the ListBox using the service layer
         private void LoadMinistries()
         {
             MinistriesLsbx.Items.Clear();
 
-            // Guard against uninitialized runtime-bound config
-            if (DatabaseConfig == null)
-            {
-                MessageBox.Show("Database configuration is not initialized.");
-                return;
-            }
-
-            string connString;
             try
             {
-                // If DatabaseConfig is dynamic, try to get ConnString safely
-                connString = DatabaseConfig.ConnString as string ?? Convert.ToString(DatabaseConfig.ConnString);
-            }
-            catch
-            {
-                MessageBox.Show("Invalid database configuration.");
-                return;
-            }
+                var ministries = _ministryService.GetAllMinistries();
 
-            if (string.IsNullOrWhiteSpace(connString))
-            {
-                MessageBox.Show("Connection string is missing.");
-                return;
-            }
-
-            try
-            {
-                using var conn = new SqlConnection(connString);
-                conn.Open();
-
-                using var cmd = new SqlCommand("SELECT Id, Name FROM Ministries", conn);
-                using var reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                foreach (var m in ministries)
                 {
                     MinistriesLsbx.Items.Add(new MinistryItem
                     {
-                        Id = reader.GetInt32(0),
-                        Name = reader.GetString(1)
+                        Id = m.Id,
+                        Name = m.Name
                     });
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to load ministries: {ex.Message}");
+                MessageBox.Show(
+                    "Failed to load ministries.\n\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -104,14 +80,26 @@ namespace MemberCrud
             if (confirm != DialogResult.Yes)
                 return;
 
-            using SqlConnection conn = new SqlConnection(DatabaseConfig.ConnString);
-            conn.Open();
+            try
+            {
+                _ministryService.DeleteMinistry(selected.Id);
 
-            using var cmd = new SqlCommand("DELETE FROM Ministries WHERE Id = @id", conn);
-            cmd.Parameters.AddWithValue("@id", selected.Id);
-            cmd.ExecuteNonQuery();
+                MessageBox.Show(
+                    $"'{selected.Name}' was deleted.",
+                    "Deleted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
-            LoadMinistries(); // refresh after deleting
+                LoadMinistries(); // refresh after deleting
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Failed to delete ministry.\n\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 
