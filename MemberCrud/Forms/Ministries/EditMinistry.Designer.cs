@@ -41,6 +41,8 @@
             RemoveMemberFromMinistryBtn = new Button();
             SaveChangesBtn = new Button();
             CancelChangesBtn = new Button();
+            label5 = new Label();
+            AllMembersLsBx = new ListBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -83,7 +85,7 @@
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(350, 12);
+            groupBox1.Location = new Point(619, 23);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(377, 231);
             groupBox1.TabIndex = 4;
@@ -101,7 +103,7 @@
             // MembersLsBx
             // 
             MembersLsBx.FormattingEnabled = true;
-            MembersLsBx.Location = new Point(43, 341);
+            MembersLsBx.Location = new Point(43, 337);
             MembersLsBx.Name = "MembersLsBx";
             MembersLsBx.Size = new Size(244, 204);
             MembersLsBx.TabIndex = 6;
@@ -120,13 +122,13 @@
             label4.AutoSize = true;
             label4.Location = new Point(43, 299);
             label4.Name = "label4";
-            label4.Size = new Size(87, 25);
+            label4.Size = new Size(205, 25);
             label4.TabIndex = 8;
-            label4.Text = "Members";
+            label4.Text = "Members In the Ministry";
             // 
             // AddMemberToMinistryBtn
             // 
-            AddMemberToMinistryBtn.Location = new Point(366, 299);
+            AddMemberToMinistryBtn.Location = new Point(619, 299);
             AddMemberToMinistryBtn.Name = "AddMemberToMinistryBtn";
             AddMemberToMinistryBtn.Size = new Size(160, 62);
             AddMemberToMinistryBtn.TabIndex = 9;
@@ -135,7 +137,7 @@
             // 
             // RemoveMemberFromMinistryBtn
             // 
-            RemoveMemberFromMinistryBtn.Location = new Point(366, 459);
+            RemoveMemberFromMinistryBtn.Location = new Point(620, 396);
             RemoveMemberFromMinistryBtn.Name = "RemoveMemberFromMinistryBtn";
             RemoveMemberFromMinistryBtn.Size = new Size(160, 62);
             RemoveMemberFromMinistryBtn.TabIndex = 10;
@@ -144,7 +146,7 @@
             // 
             // SaveChangesBtn
             // 
-            SaveChangesBtn.Location = new Point(567, 361);
+            SaveChangesBtn.Location = new Point(836, 299);
             SaveChangesBtn.Name = "SaveChangesBtn";
             SaveChangesBtn.Size = new Size(160, 62);
             SaveChangesBtn.TabIndex = 11;
@@ -153,18 +155,37 @@
             // 
             // CancelChangesBtn
             // 
-            CancelChangesBtn.Location = new Point(567, 429);
+            CancelChangesBtn.Location = new Point(836, 387);
             CancelChangesBtn.Name = "CancelChangesBtn";
             CancelChangesBtn.Size = new Size(160, 62);
             CancelChangesBtn.TabIndex = 12;
             CancelChangesBtn.Text = "Cancel";
             CancelChangesBtn.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(355, 23);
+            label5.Name = "label5";
+            label5.Size = new Size(112, 25);
+            label5.TabIndex = 13;
+            label5.Text = "All Members";
+            // 
+            // AllMembersLsBx
+            // 
+            AllMembersLsBx.FormattingEnabled = true;
+            AllMembersLsBx.Location = new Point(355, 67);
+            AllMembersLsBx.Name = "AllMembersLsBx";
+            AllMembersLsBx.Size = new Size(203, 454);
+            AllMembersLsBx.TabIndex = 14;
+            // 
             // EditMinistry
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 570);
+            ClientSize = new Size(1017, 570);
+            Controls.Add(AllMembersLsBx);
+            Controls.Add(label5);
             Controls.Add(CancelChangesBtn);
             Controls.Add(SaveChangesBtn);
             Controls.Add(RemoveMemberFromMinistryBtn);
@@ -197,5 +218,7 @@
         private Button RemoveMemberFromMinistryBtn;
         private Button SaveChangesBtn;
         private Button CancelChangesBtn;
+        private Label label5;
+        private ListBox AllMembersLsBx;
     }
 }
