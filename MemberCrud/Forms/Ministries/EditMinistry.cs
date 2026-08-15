@@ -7,17 +7,40 @@ using MemberCrud.Services;
 
 namespace MemberCrud
 {
+    /// <summary>
+    /// Form used to edit an existing ministry and manage which members are assigned to it.
+    ///
+    /// The form loads the list of ministries and members, allows adding/removing
+    /// member assignments, and saves updates to the ministry's name and description.
+    /// </summary>
     public partial class EditMinistry : Form
     {
+        /// <summary>
+        /// Service providing CRUD operations for ministries.
+        /// </summary>
         private readonly MinistryService _ministryService = new();
+
+        /// <summary>
+        /// Service providing read operations for members.
+        /// </summary>
         private readonly MemberService _memberService = new();
 
-        // Initially requested ministry id (passed in constructor)
+        /// <summary>
+        /// Initially requested ministry id. When the form is opened for a
+        /// specific ministry this value is used to pre-select it in the UI.
+        /// </summary>
         private readonly int? _initialMinistryId;
 
-        // Currently selected ministry id
+        /// <summary>
+        /// Currently selected ministry id in the Ministries list box.
+        /// Null if no ministry is selected.
+        /// </summary>
         private int? _selectedMinistryId;
 
+        /// <summary>
+        /// Creates a new instance of the EditMinistry form.
+        /// </summary>
+        /// <param name="id">The ministry id to edit. Pass 0 or -1 to open without pre-selection.</param>
         public EditMinistry(int id)
         {
             InitializeComponent();
@@ -32,6 +55,10 @@ namespace MemberCrud
             CancelChangesBtn.Click += CancelChangesBtn_Click;
         }
 
+        /// <summary>
+        /// Handles the form Load event. Populates the members and ministries lists
+        /// and pre-selects the ministry specified at construction (if any).
+        /// </summary>
         private void EditMinistry_Load(object? sender, EventArgs e)
         {
             LoadAllMembers();
@@ -48,6 +75,9 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Loads all members from the database into the AllMembers list box.
+        /// </summary>
         private void LoadAllMembers()
         {
             AllMembersLsBx.Items.Clear();
@@ -66,6 +96,9 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Loads all ministries from the database into the Ministries list box.
+        /// </summary>
         private void LoadMinistries()
         {
             MinistriesLsBx.Items.Clear();
@@ -84,6 +117,10 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Handles selection changes in the Ministries list box. Loads the
+        /// ministry details (name, description) and the members assigned to it.
+        /// </summary>
         private void MinistriesLsBx_SelectedIndexChanged(object? sender, EventArgs e)
         {
             if (MinistriesLsBx.SelectedItem is not MinistryItem selected)
@@ -113,6 +150,9 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Loads members assigned to the specified ministry into the Members list box.
+        /// </summary>
         private void LoadMembersInMinistry(int ministryId)
         {
             MembersLsBx.Items.Clear();
@@ -124,6 +164,10 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Adds the selected member from AllMembers to the currently selected ministry.
+        /// Prevents duplicate assignments in the UI and persists the association.
+        /// </summary>
         private void AddMemberToMinistryBtn_Click(object? sender, EventArgs e)
         {
             if (_selectedMinistryId == null)
@@ -157,6 +201,9 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Removes the selected member from the currently selected ministry.
+        /// </summary>
         private void RemoveMemberFromMinistryBtn_Click(object? sender, EventArgs e)
         {
             if (_selectedMinistryId == null)
@@ -182,6 +229,10 @@ namespace MemberCrud
             }
         }
 
+        /// <summary>
+        /// Saves changes made to the ministry's name and description. Closes the
+        /// form on success.
+        /// </summary>
         private void SaveChangesBtn_Click(object? sender, EventArgs e)
         {
             if (_selectedMinistryId == null)
@@ -208,15 +259,21 @@ namespace MemberCrud
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to save changes.\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
+        /// <summary>
+        /// Closes the form without saving changes.
+        /// </summary>
         private void CancelChangesBtn_Click(object? sender, EventArgs e)
         {
             Close();
         }
 
-        // Simple wrapper for showing members in ListBox while keeping Id
+        /// <summary>
+        /// Simple wrapper for showing members in a ListBox while keeping their Ids.
+        /// </summary>
         private class MemberListItem
         {
             public int Id { get; }
