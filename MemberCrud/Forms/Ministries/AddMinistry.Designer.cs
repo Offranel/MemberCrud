@@ -32,6 +32,8 @@
             label2 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
+            SaveChangesBtn = new Button();
+            CancelBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -67,11 +69,31 @@
             textBox2.Size = new Size(261, 84);
             textBox2.TabIndex = 3;
             // 
+            // SaveChangesBtn
+            // 
+            SaveChangesBtn.Location = new Point(24, 147);
+            SaveChangesBtn.Name = "SaveChangesBtn";
+            SaveChangesBtn.Size = new Size(137, 49);
+            SaveChangesBtn.TabIndex = 4;
+            SaveChangesBtn.Text = "Save Changes";
+            SaveChangesBtn.UseVisualStyleBackColor = true;
+            // 
+            // CancelBtn
+            // 
+            CancelBtn.Location = new Point(237, 147);
+            CancelBtn.Name = "CancelBtn";
+            CancelBtn.Size = new Size(149, 49);
+            CancelBtn.TabIndex = 5;
+            CancelBtn.Text = "Cancel";
+            CancelBtn.UseVisualStyleBackColor = true;
+            // 
             // AddMinistry
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 223);
+            Controls.Add(CancelBtn);
+            Controls.Add(SaveChangesBtn);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(label2);
@@ -88,5 +110,7 @@
         private Label label2;
         private TextBox textBox1;
         private TextBox textBox2;
+        private Button SaveChangesBtn;
+        private Button CancelBtn;
     }
 }
