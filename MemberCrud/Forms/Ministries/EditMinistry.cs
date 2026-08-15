@@ -12,12 +12,16 @@ namespace MemberCrud
         private readonly MinistryService _ministryService = new();
         private readonly MemberService _memberService = new();
 
+        // Initially requested ministry id (passed in constructor)
+        private readonly int? _initialMinistryId;
+
         // Currently selected ministry id
         private int? _selectedMinistryId;
 
         public EditMinistry(int id)
         {
             InitializeComponent();
+            _initialMinistryId = id;
 
             // Wire up events
             Load += EditMinistry_Load;
@@ -32,6 +36,16 @@ namespace MemberCrud
         {
             LoadAllMembers();
             LoadMinistries();
+
+            // If the form was constructed for a specific ministry, select it
+            if (_initialMinistryId.HasValue)
+            {
+                var toSelect = MinistriesLsBx.Items.Cast<MinistryItem>().FirstOrDefault(x => x.Id == _initialMinistryId.Value);
+                if (toSelect != null)
+                {
+                    MinistriesLsBx.SelectedItem = toSelect;
+                }
+            }
         }
 
         private void LoadAllMembers()
@@ -189,6 +203,7 @@ namespace MemberCrud
 
                 MessageBox.Show("Changes saved.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadMinistries();
+                Close();
             }
             catch (Exception ex)
             {
