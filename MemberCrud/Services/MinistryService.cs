@@ -133,4 +133,56 @@ public class MinistryService
         // a Ministry object and ToList() returns them as a list.
         return db.Ministries.ToList();
     }
+
+    /// <summary>
+    /// Retrieves a single ministry by id.
+    /// </summary>
+    public Ministry? GetMinistryById(int id)
+    {
+        using MemberCrudDbContext db = new();
+        return db.Ministries.Find(id);
+    }
+
+    /// <summary>
+    /// Returns all members assigned to a specific ministry.
+    /// </summary>
+    public List<Member> GetMembersForMinistry(int ministryId)
+    {
+        using MemberCrudDbContext db = new();
+
+        var query = from mm in db.MemberMinistries
+                    join m in db.Members on mm.MemberId equals m.Id
+                    where mm.MinistryId == ministryId
+                    select m;
+
+        return query.ToList();
+    }
+
+    /// <summary>
+    /// Assigns a member to the specified ministry if not already assigned.
+    /// </summary>
+    public void AssignMemberToMinistry(int ministryId, int memberId)
+    {
+        using MemberCrudDbContext db = new();
+
+        bool exists = db.MemberMinistries.Any(x => x.MinistryId == ministryId && x.MemberId == memberId);
+        if (exists) return;
+
+        db.MemberMinistries.Add(new MemberMinistry { MinistryId = ministryId, MemberId = memberId });
+        db.SaveChanges();
+    }
+
+    /// <summary>
+    /// Removes the association between a member and a ministry if it exists.
+    /// </summary>
+    public void RemoveMemberFromMinistry(int ministryId, int memberId)
+    {
+        using MemberCrudDbContext db = new();
+
+        var mapping = db.MemberMinistries.FirstOrDefault(x => x.MinistryId == ministryId && x.MemberId == memberId);
+        if (mapping == null) return;
+
+        db.MemberMinistries.Remove(mapping);
+        db.SaveChanges();
+    }
 }
