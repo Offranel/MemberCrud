@@ -144,26 +144,39 @@ namespace MemberCrud
 
         private void LoadMemberInformation()
         {
+            // Display personal information.
             textBox1.Text = _member.FirstName;
             textBox2.Text = _member.LastName;
+            // Display contact information.
             textBox3.Text = _member.Phone;
             textBox4.Text = _member.Email;
-
+            // Display the current membership status.
             comboBox1.SelectedItem = _member.MembershipStatus;
-
+            // Display address information.
             textBox5.Text = _member.Street;
             textBox6.Text = _member.City;
             textBox7.Text = _member.PostalCode;
 
-            
+            // Convert DateOnly to DateTime because
+            // DateTimePicker uses DateTime values.
             dateTimePicker1.Value =
                 _member.DateOfBirth.ToDateTime(TimeOnly.MinValue);
         }
 
-       
+        /// <summary>
+        /// Validates the edited information and saves the changes.
+        ///
+        /// This method reads the new values from the form,
+        /// updates the selected Member object, and calls
+        /// MemberService.UpdateMember to save the changes
+        /// to the SQL Server database through Entity Framework Core.
+        /// </summary>
+
+
         private void SaveMemberBtn_Click(object sender, EventArgs e)
         {
-            
+            // Make sure important fields are not empty.
+
             if (string.IsNullOrWhiteSpace(textBox1.Text) ||
                 string.IsNullOrWhiteSpace(textBox2.Text) ||
                 string.IsNullOrWhiteSpace(textBox3.Text) ||
@@ -177,15 +190,21 @@ namespace MemberCrud
 
                 return;
             }
+            // Update the member's personal information.
 
-            
             _member.FirstName = textBox1.Text;
             _member.LastName = textBox2.Text;
+
+            // Update contact information.
+
             _member.Phone = textBox3.Text;
             _member.Email = textBox4.Text;
 
+            // Update membership status.
             _member.MembershipStatus =
                 comboBox1.SelectedItem?.ToString() ?? "Active";
+
+            // Update address information.
 
             _member.Street = textBox5.Text;
             _member.City = textBox6.Text;
@@ -194,21 +213,25 @@ namespace MemberCrud
             _member.DateOfBirth =
                 DateOnly.FromDateTime(dateTimePicker1.Value);
 
+            
             try
             {
-                
+                // Convert the DateTimePicker value back to DateOnly.
+
                 _memberService.UpdateMember(_member);
 
+                // Tell the user that the update was successful.
                 MessageBox.Show(
                     "Member updated successfully!",
                     "Success",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
+                // close the form after saving
                 Close();
             }
             catch (Exception ex)
             {
+                // Show an error message if the update fails.
                 MessageBox.Show(
                     "The member could not be updated.\n\n" + ex.Message,
                     "Error",
@@ -216,15 +239,22 @@ namespace MemberCrud
                     MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// Closes the Edit Member form without saving changes.
+        /// </summary>
         private void CancelMemberBtn_Click(object sender, EventArgs e)
         {
             Close();
         }
-
+        /// <summary>
+        /// Handles the click event connected to the Postal Code label.
+        ///
+        /// No action is required here. The method exists because
+        /// the Windows Forms Designer is connected to this event.
+        /// </summary>
         private void label10_Click(object sender, EventArgs e)
         {
-            
+            // No action is required.
         }
     }
 }
