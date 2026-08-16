@@ -23,6 +23,10 @@ namespace MemberCrud
             // Connect the Save Member button to its click event.
             SaveNewMemberBtn.Click += AddMemberButton_Click;
 
+            // Connect the Cancel button to its click event.
+
+            CancelMemberBtn.Click += CancelMemberBtn_Click;
+
             // Add membership status options.
             MembershipStatusCmb.Items.Add("Active");
             MembershipStatusCmb.Items.Add("Inactive");
