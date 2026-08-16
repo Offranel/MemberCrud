@@ -36,7 +36,14 @@ namespace MemberCrud
 
         private readonly Member _member;
 
-     
+        /// <summary>
+        /// Service used to update member information in the database.
+        ///
+        /// MemberService uses Entity Framework Core and
+        /// MemberCrudDbContext to communicate with SQL Server.
+        /// </summary>
+
+
         private readonly MemberService _memberService = new MemberService();
 
         
