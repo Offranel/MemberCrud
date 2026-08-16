@@ -87,4 +87,5 @@ public class MemberService
         // Applies the deletion to the SQL Server database.
         db.SaveChanges();
     }
+    
 }
