@@ -60,15 +60,18 @@ namespace MemberCrud
         {
             InitializeComponent();
 
+            // Save the selected member for editing.
+
             _member = member;
 
-            
+            // Add membership status options.
+
             comboBox1.Items.Add("Active");
             comboBox1.Items.Add("Inactive");
             comboBox1.Items.Add("Pending");
             comboBox1.Items.Add("Visitor");
 
-          
+            // Add all U.S. states.
             comboBox2.Items.AddRange(new string[]
             {
                 "Alabama",
@@ -123,14 +126,22 @@ namespace MemberCrud
                 "Wyoming"
             });
 
-            
+            // Prevent the user from selecting a future birth date.
+
             dateTimePicker1.MaxDate = DateTime.Today;
 
-            
+            // Display the selected member information. 
             LoadMemberInformation();
         }
 
-        
+        /// <summary>
+        /// Loads the selected member information into the form.
+        ///
+        /// Each Member property is copied into its corresponding
+        /// TextBox, ComboBox, or DateTimePicker so the user can
+        /// see and edit the current values.
+        /// </summary>
+
         private void LoadMemberInformation()
         {
             textBox1.Text = _member.FirstName;
