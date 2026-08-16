@@ -26,7 +26,14 @@ namespace MemberCrud
 
     public partial class EditMember : Form
     {
-      
+        /// <summary>
+        /// Stores the member currently being edited.
+        ///
+        /// This object contains the original member information
+        /// loaded from the database. The form updates this object
+        /// before sending it to MemberService.
+        /// </summary>
+
         private readonly Member _member;
 
      
