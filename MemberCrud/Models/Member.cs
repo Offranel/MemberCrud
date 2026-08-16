@@ -107,5 +107,10 @@ public class Member
     /// </summary>
     public DateTime CreateAt { get; set; }
 
+    public override string ToString()
+    {
+        return $"{FirstName} {LastName} - {MembershipStatus}";
+    }
+
 }
 
