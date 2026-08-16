@@ -45,8 +45,17 @@ namespace MemberCrud
 
 
         private readonly MemberService _memberService = new MemberService();
+        /// <summary>
+        /// Initializes the Edit Member form.
+        ///
+        /// The selected Member object is received from another form,
+        /// stored in the _member field, and displayed in the form
+        /// controls so the user can edit the information.
+        /// </summary>
+        /// <param name="member">
+        /// The existing member selected for editing.
+        /// </param>
 
-        
         public EditMember(Member member)
         {
             InitializeComponent();
