@@ -87,5 +87,14 @@ public class MemberService
         // Applies the deletion to the SQL Server database.
         db.SaveChanges();
     }
-    
+    public void UpdateMember(Member member)
+    {
+        // Creates a database context for this operation.
+        using MemberCrudDbContext db = new();
+        // Marks the selected member as a record that should
+        // be updated in the Members table.
+        db.Members.Update(member);
+        // Applies the update to the SQL Server database.
+        db.SaveChanges();
+    }
 }
