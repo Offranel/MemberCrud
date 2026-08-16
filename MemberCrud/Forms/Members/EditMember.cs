@@ -12,7 +12,18 @@ using MemberCrud.Services;
 
 namespace MemberCrud
 {
-   
+    /// <summary>
+    /// Represents the form used to edit an existing church member.
+    ///
+    /// This form receives a Member object selected from the
+    /// MemberManagement form. It displays the current member
+    /// information, allows the user to change the information,
+    /// and saves the updated values to the database.
+    ///
+    /// The form uses MemberService to update the member through
+    /// Entity Framework Core.
+    /// </summary>
+
     public partial class EditMember : Form
     {
       
