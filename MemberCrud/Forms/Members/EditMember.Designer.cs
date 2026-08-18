@@ -56,6 +56,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = SystemColors.Highlight;
             label1.Location = new Point(54, 15);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
@@ -66,6 +67,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.ForeColor = SystemColors.Highlight;
             label2.Location = new Point(762, 15);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
@@ -88,6 +90,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.ForeColor = SystemColors.Highlight;
             label3.Location = new Point(54, 156);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
@@ -98,6 +101,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.ForeColor = SystemColors.Highlight;
             label4.Location = new Point(762, 156);
             label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
@@ -108,6 +112,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.ForeColor = SystemColors.Highlight;
             label5.Location = new Point(250, 305);
             label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
@@ -118,6 +123,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.ForeColor = SystemColors.Highlight;
             label6.Location = new Point(554, 426);
             label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
@@ -128,6 +134,7 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.ForeColor = SystemColors.Highlight;
             label7.Location = new Point(54, 505);
             label7.Margin = new Padding(5, 0, 5, 0);
             label7.Name = "label7";
@@ -138,6 +145,7 @@
             // label8
             // 
             label8.AutoSize = true;
+            label8.ForeColor = SystemColors.Highlight;
             label8.Location = new Point(762, 505);
             label8.Margin = new Padding(5, 0, 5, 0);
             label8.Name = "label8";
@@ -148,6 +156,7 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.ForeColor = SystemColors.Highlight;
             label9.Location = new Point(54, 664);
             label9.Margin = new Padding(5, 0, 5, 0);
             label9.Name = "label9";
@@ -158,6 +167,7 @@
             // label10
             // 
             label10.AutoSize = true;
+            label10.ForeColor = SystemColors.Highlight;
             label10.Location = new Point(762, 664);
             label10.Margin = new Padding(5, 0, 5, 0);
             label10.Name = "label10";
@@ -168,6 +178,7 @@
             // label11
             // 
             label11.AutoSize = true;
+            label11.ForeColor = SystemColors.Highlight;
             label11.Location = new Point(250, 835);
             label11.Margin = new Padding(5, 0, 5, 0);
             label11.Name = "label11";

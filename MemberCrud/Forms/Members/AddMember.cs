@@ -136,7 +136,7 @@ namespace MemberCrud
                 DateOfBirth =
                     DateOnly.FromDateTime(DateOfBirthDtp.Value),
 
-                CreatedAt = DateTime.Now
+                CreateAt = DateTime.Now
             };
 
             try

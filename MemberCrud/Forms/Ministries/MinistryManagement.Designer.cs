@@ -36,17 +36,21 @@
             // 
             // MinistriesLsbx
             // 
+            MinistriesLsbx.ForeColor = SystemColors.Highlight;
             MinistriesLsbx.FormattingEnabled = true;
-            MinistriesLsbx.Location = new Point(42, 41);
+            MinistriesLsbx.Location = new Point(71, 67);
+            MinistriesLsbx.Margin = new Padding(5, 5, 5, 5);
             MinistriesLsbx.Name = "MinistriesLsbx";
-            MinistriesLsbx.Size = new Size(269, 354);
+            MinistriesLsbx.Size = new Size(454, 578);
             MinistriesLsbx.TabIndex = 0;
             // 
             // AddMinistryBtn
             // 
-            AddMinistryBtn.Location = new Point(373, 86);
+            AddMinistryBtn.ForeColor = Color.FromArgb(192, 0, 0);
+            AddMinistryBtn.Location = new Point(634, 141);
+            AddMinistryBtn.Margin = new Padding(5, 5, 5, 5);
             AddMinistryBtn.Name = "AddMinistryBtn";
-            AddMinistryBtn.Size = new Size(180, 41);
+            AddMinistryBtn.Size = new Size(306, 67);
             AddMinistryBtn.TabIndex = 1;
             AddMinistryBtn.Text = "Add Ministry";
             AddMinistryBtn.UseVisualStyleBackColor = true;
@@ -54,9 +58,11 @@
             // 
             // EditMinistryBtn
             // 
-            EditMinistryBtn.Location = new Point(373, 197);
+            EditMinistryBtn.ForeColor = Color.FromArgb(192, 0, 0);
+            EditMinistryBtn.Location = new Point(634, 323);
+            EditMinistryBtn.Margin = new Padding(5, 5, 5, 5);
             EditMinistryBtn.Name = "EditMinistryBtn";
-            EditMinistryBtn.Size = new Size(180, 41);
+            EditMinistryBtn.Size = new Size(306, 67);
             EditMinistryBtn.TabIndex = 2;
             EditMinistryBtn.Text = "Edit Ministry";
             EditMinistryBtn.UseVisualStyleBackColor = true;
@@ -64,9 +70,11 @@
             // 
             // DeleteMinistryBtn
             // 
-            DeleteMinistryBtn.Location = new Point(373, 307);
+            DeleteMinistryBtn.ForeColor = Color.FromArgb(192, 0, 0);
+            DeleteMinistryBtn.Location = new Point(634, 503);
+            DeleteMinistryBtn.Margin = new Padding(5, 5, 5, 5);
             DeleteMinistryBtn.Name = "DeleteMinistryBtn";
-            DeleteMinistryBtn.Size = new Size(180, 41);
+            DeleteMinistryBtn.Size = new Size(306, 67);
             DeleteMinistryBtn.TabIndex = 3;
             DeleteMinistryBtn.Text = "Delete Ministry";
             DeleteMinistryBtn.UseVisualStyleBackColor = true;
@@ -74,13 +82,14 @@
             // 
             // MinistryManagement
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(607, 450);
+            ClientSize = new Size(1032, 738);
             Controls.Add(DeleteMinistryBtn);
             Controls.Add(EditMinistryBtn);
             Controls.Add(AddMinistryBtn);
             Controls.Add(MinistriesLsbx);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "MinistryManagement";
             Text = "MinistryManagement";
             ResumeLayout(false);

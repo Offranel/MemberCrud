@@ -60,6 +60,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.ForeColor = Color.RoyalBlue;
             label1.Location = new Point(396, 84);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
