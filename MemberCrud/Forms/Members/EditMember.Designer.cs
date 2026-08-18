@@ -75,8 +75,9 @@
             // 
             // SaveMemberBtn
             // 
+            SaveMemberBtn.ForeColor = Color.FromArgb(192, 0, 0);
             SaveMemberBtn.Location = new Point(301, 928);
-            SaveMemberBtn.Margin = new Padding(5, 5, 5, 5);
+            SaveMemberBtn.Margin = new Padding(5);
             SaveMemberBtn.Name = "SaveMemberBtn";
             SaveMemberBtn.Size = new Size(262, 56);
             SaveMemberBtn.TabIndex = 2;
@@ -176,8 +177,9 @@
             // 
             // CancelMemberBtn
             // 
+            CancelMemberBtn.ForeColor = Color.FromArgb(192, 0, 0);
             CancelMemberBtn.Location = new Point(670, 928);
-            CancelMemberBtn.Margin = new Padding(5, 5, 5, 5);
+            CancelMemberBtn.Margin = new Padding(5);
             CancelMemberBtn.Name = "CancelMemberBtn";
             CancelMemberBtn.Size = new Size(190, 56);
             CancelMemberBtn.TabIndex = 12;
@@ -188,7 +190,7 @@
             // textBox1
             // 
             textBox1.Location = new Point(119, 61);
-            textBox1.Margin = new Padding(5, 5, 5, 5);
+            textBox1.Margin = new Padding(5);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(370, 47);
             textBox1.TabIndex = 13;
@@ -196,7 +198,7 @@
             // textBox2
             // 
             textBox2.Location = new Point(819, 61);
-            textBox2.Margin = new Padding(5, 5, 5, 5);
+            textBox2.Margin = new Padding(5);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(334, 47);
             textBox2.TabIndex = 14;
@@ -204,7 +206,7 @@
             // textBox3
             // 
             textBox3.Location = new Point(119, 203);
-            textBox3.Margin = new Padding(5, 5, 5, 5);
+            textBox3.Margin = new Padding(5);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(370, 47);
             textBox3.TabIndex = 15;
@@ -212,7 +214,7 @@
             // textBox4
             // 
             textBox4.Location = new Point(819, 203);
-            textBox4.Margin = new Padding(5, 5, 5, 5);
+            textBox4.Margin = new Padding(5);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(417, 47);
             textBox4.TabIndex = 16;
@@ -221,7 +223,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(721, 305);
-            comboBox1.Margin = new Padding(5, 5, 5, 5);
+            comboBox1.Margin = new Padding(5);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(307, 49);
             comboBox1.TabIndex = 17;
@@ -229,7 +231,7 @@
             // textBox5
             // 
             textBox5.Location = new Point(119, 551);
-            textBox5.Margin = new Padding(5, 5, 5, 5);
+            textBox5.Margin = new Padding(5);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(370, 47);
             textBox5.TabIndex = 18;
@@ -237,7 +239,7 @@
             // textBox6
             // 
             textBox6.Location = new Point(819, 551);
-            textBox6.Margin = new Padding(5, 5, 5, 5);
+            textBox6.Margin = new Padding(5);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(334, 47);
             textBox6.TabIndex = 19;
@@ -245,7 +247,7 @@
             // textBox7
             // 
             textBox7.Location = new Point(819, 710);
-            textBox7.Margin = new Padding(5, 5, 5, 5);
+            textBox7.Margin = new Padding(5);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(334, 47);
             textBox7.TabIndex = 20;
@@ -254,15 +256,16 @@
             // 
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(119, 710);
-            comboBox2.Margin = new Padding(5, 5, 5, 5);
+            comboBox2.Margin = new Padding(5);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(307, 49);
             comboBox2.TabIndex = 21;
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.CalendarForeColor = SystemColors.Highlight;
             dateTimePicker1.Location = new Point(626, 827);
-            dateTimePicker1.Margin = new Padding(5, 5, 5, 5);
+            dateTimePicker1.Margin = new Padding(5);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(507, 47);
             dateTimePicker1.TabIndex = 22;
@@ -295,7 +298,7 @@
             Controls.Add(SaveMemberBtn);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "EditMember";
             Text = "EditMember";
             ResumeLayout(false);

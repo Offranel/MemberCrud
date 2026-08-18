@@ -35,9 +35,11 @@
             // 
             // MemberManagementBtn
             // 
-            MemberManagementBtn.Location = new Point(122, 120);
+            MemberManagementBtn.ForeColor = SystemColors.Highlight;
+            MemberManagementBtn.Location = new Point(207, 197);
+            MemberManagementBtn.Margin = new Padding(5, 5, 5, 5);
             MemberManagementBtn.Name = "MemberManagementBtn";
-            MemberManagementBtn.Size = new Size(295, 103);
+            MemberManagementBtn.Size = new Size(502, 169);
             MemberManagementBtn.TabIndex = 0;
             MemberManagementBtn.Text = "Member Management";
             MemberManagementBtn.UseVisualStyleBackColor = true;
@@ -45,9 +47,11 @@
             // 
             // MinistryManagemetBtn
             // 
-            MinistryManagemetBtn.Location = new Point(122, 275);
+            MinistryManagemetBtn.ForeColor = SystemColors.Highlight;
+            MinistryManagemetBtn.Location = new Point(207, 451);
+            MinistryManagemetBtn.Margin = new Padding(5, 5, 5, 5);
             MinistryManagemetBtn.Name = "MinistryManagemetBtn";
-            MinistryManagemetBtn.Size = new Size(293, 101);
+            MinistryManagemetBtn.Size = new Size(498, 166);
             MinistryManagemetBtn.TabIndex = 1;
             MinistryManagemetBtn.Text = "Ministry Management";
             MinistryManagemetBtn.UseVisualStyleBackColor = true;
@@ -56,20 +60,22 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(233, 51);
+            label1.Location = new Point(396, 84);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(61, 25);
+            label1.Size = new Size(100, 41);
             label1.TabIndex = 2;
             label1.Text = "Go to:";
             // 
             // ChurchManagement
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(553, 450);
+            ClientSize = new Size(940, 738);
             Controls.Add(label1);
             Controls.Add(MinistryManagemetBtn);
             Controls.Add(MemberManagementBtn);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "ChurchManagement";
             Text = "ChurchManagement";
             ResumeLayout(false);
