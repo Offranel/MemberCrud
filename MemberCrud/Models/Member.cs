@@ -105,7 +105,7 @@ public class Member
     /// system. It can be used for reporting, history, and
     /// administrative purposes.
     /// </summary>
-    public DateTime CreateAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     public override string ToString()
     {
