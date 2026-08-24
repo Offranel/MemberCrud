@@ -146,7 +146,7 @@
             // 
             // SaveChangesBtn
             // 
-            SaveChangesBtn.Location = new Point(836, 299);
+            SaveChangesBtn.Location = new Point(836, 308);
             SaveChangesBtn.Name = "SaveChangesBtn";
             SaveChangesBtn.Size = new Size(160, 62);
             SaveChangesBtn.TabIndex = 11;
