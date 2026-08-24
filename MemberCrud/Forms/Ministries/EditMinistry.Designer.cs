@@ -84,10 +84,11 @@
             groupBox1.Controls.Add(textBox2);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(SaveChangesBtn);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(619, 23);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(377, 231);
+            groupBox1.Size = new Size(377, 279);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Ministry Info";
@@ -128,7 +129,7 @@
             // 
             // AddMemberToMinistryBtn
             // 
-            AddMemberToMinistryBtn.Location = new Point(619, 299);
+            AddMemberToMinistryBtn.Location = new Point(715, 328);
             AddMemberToMinistryBtn.Name = "AddMemberToMinistryBtn";
             AddMemberToMinistryBtn.Size = new Size(160, 62);
             AddMemberToMinistryBtn.TabIndex = 9;
@@ -146,7 +147,7 @@
             // 
             // SaveChangesBtn
             // 
-            SaveChangesBtn.Location = new Point(836, 308);
+            SaveChangesBtn.Location = new Point(96, 195);
             SaveChangesBtn.Name = "SaveChangesBtn";
             SaveChangesBtn.Size = new Size(160, 62);
             SaveChangesBtn.TabIndex = 11;
@@ -187,7 +188,6 @@
             Controls.Add(AllMembersLsBx);
             Controls.Add(label5);
             Controls.Add(CancelChangesBtn);
-            Controls.Add(SaveChangesBtn);
             Controls.Add(RemoveMemberFromMinistryBtn);
             Controls.Add(AddMemberToMinistryBtn);
             Controls.Add(label4);
