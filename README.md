@@ -54,22 +54,21 @@ The screenshots below show some of the main features of the application.
 
 Shows the list of members and the action buttons used to add, edit, and delete members.
 
-![Member Management Form](screenshots/member-management.png)
+![Member Management Form](Screenshot%20(57).png)
 
 ### Ministry Management Form
 
 Shows the list of ministries and the action buttons used to add, edit, and delete ministries.
 
-![Ministry Management Form](screenshots/ministry-management.png)
+![Ministry Management Form](Screenshot%20(58).png)
 
-### Assign Members to Ministry
+### Add Member Form
 
-Shows how users can assign members to a ministry or remove members from a ministry.
+Shows the form used to enter a new member's information, including name, phone number, email, membership status, address, and date of birth.
 
-![Assign Members to Ministry](screenshots/assign-members.png)
+![Add Member Form](Screenshot%20(59).png)
 
 ## Team Members
-
 Francis Sengele and Ivanna Otero
 
 ## Course
