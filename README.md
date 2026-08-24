@@ -47,8 +47,8 @@ Entity Framework Core is used to communicate between the C# application and the 
 - **Database** - Contains the initial SQL database script.
 
 ## Screenshots
-
-The screenshots below show some of the main features of the application.
+The screenshots below provide examples of the application's user interface.
+The application includes additional forms and features that are not shown here.
 
 ### Member Management Form
 
