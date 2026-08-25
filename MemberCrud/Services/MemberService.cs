@@ -17,6 +17,21 @@ namespace MemberCrud.Services;
 /// </summary>
 public class MemberService
 {
+    private readonly System.Func<MemberCrudDbContext> _contextFactory;
+
+    // Default constructor used by the application. It will create
+    // MemberCrudDbContext instances using the parameterless constructor.
+    public MemberService()
+    {
+        _contextFactory = () => new MemberCrudDbContext();
+    }
+
+    // Constructor for tests or DI scenarios where a factory that returns
+    // configured DbContext instances is provided.
+    public MemberService(System.Func<MemberCrudDbContext> contextFactory)
+    {
+        _contextFactory = contextFactory ?? throw new System.ArgumentNullException(nameof(contextFactory));
+    }
     /// <summary>
     /// Retrieves all members stored in the Members table.
     /// </summary>
@@ -32,7 +47,7 @@ public class MemberService
     {
         // Creates a temporary database context used to communicate
         // with the MemberCrud database.
-        using MemberCrudDbContext db = new();
+        using MemberCrudDbContext db = _contextFactory();
 
         // Retrieves all records from the Members table and converts
         // the results into a List of Member objects.
@@ -54,7 +69,7 @@ public class MemberService
     public void AddMember(Member member)
     {
         // Creates a database context for this operation.
-        using MemberCrudDbContext db = new();
+        using MemberCrudDbContext db = _contextFactory();
 
         // Marks the Member object as a new record that should
         // be inserted into the Members table.
@@ -78,7 +93,7 @@ public class MemberService
     public void DeleteMember(Member member)
     {
         // Creates a database context for this operation.
-        using MemberCrudDbContext db = new();
+        using MemberCrudDbContext db = _contextFactory();
 
         // Marks the selected member as a record that should
         // be removed from the Members table.
@@ -90,7 +105,7 @@ public class MemberService
     public void UpdateMember(Member member)
     {
         // Creates a database context for this operation.
-        using MemberCrudDbContext db = new();
+        using MemberCrudDbContext db = _contextFactory();
         // Marks the selected member as a record that should
         // be updated in the Members table.
         db.Members.Update(member);
