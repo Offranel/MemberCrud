@@ -11,7 +11,10 @@ namespace MemberCrud
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ChurchManagement());
+        // Ensure seed data is present (inserts sample rows if tables are empty)
+        MemberCrud.Data.DbSeeder.Seed();
+
+        Application.Run(new ChurchManagement());
         }
     }
 }

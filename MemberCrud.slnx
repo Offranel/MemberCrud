@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="MemberCrud.UnitTests/MemberCrud.UnitTests.csproj" Id="a84fc917-31fc-4001-b8b0-4cb94aee74c5" />
   <Project Path="MemberCrud/MemberCrud.csproj" />
 </Solution>
